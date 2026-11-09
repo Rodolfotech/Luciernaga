@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night-950: #070912;
+  --color-night-900: #0c0f1d;
+  --color-night-800: #141933;
+  --color-night-700: #1f2647;
+  --color-night-600: #2d3663;
+
+  --color-glow-200: #f4fbc4;
+  --color-glow-300: #ebf78f;
+  --color-glow-400: #dcef5a;
+  --color-glow-500: #c8e030;
+
+  --color-mist-100: #eef0f8;
+  --color-mist-300: #b9bfd6;
+  --color-mist-400: #8a91ad;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-night-950);
+  color: var(--color-mist-100);
+}
+
+::selection {
+  background: var(--color-glow-400);
+  color: var(--color-night-950);
+}
+
+@utility glow-text {
+  background: linear-gradient(90deg, var(--color-glow-200), var(--color-glow-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(12px, -18px);
+    opacity: 1;
+  }
+}
+
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-float {
+    animation: none;
+  }
+}
